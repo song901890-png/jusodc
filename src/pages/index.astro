@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteCard from '../components/SiteCard.astro';
+import Checker from '../components/Checker.astro';
+import StatusStrip from '../components/StatusStrip.astro';
+import { SITE, HOME_META } from '../config';
+import { categories, sites, sitesIn, checkedAt } from '../lib/data';
+import { graph, website, organization, collectionPage } from '../lib/schema';
+
+const n = sites.length;
+const cats = categories.length;
+const title = HOME_META.title(n);
+const description = HOME_META.description(n, cats);
+
+const faqs = [
+  {
+    q: '링크모음과 주소모음은 어떻게 다른가요?',
+    a: '같은 뜻으로 쓰입니다. 자주 가는 사이트의 주소를 한곳에 모아 두고 눌러서 바로 들어가는 페이지를 말합니다. 링크디시는 그중 공식 사이트만 골라 분야별로 정리합니다.',
+  },
+  {
+    q: '어떤 사이트가 등록되나요?',
+    a: '운영 주체가 확인되는 공식 사이트만 등록합니다. 불법 복제물 공유, 도박, 성인, 무단 중계 사이트는 요청이 있어도 싣지 않습니다. 자세한 기준은 소개 페이지에 있습니다.',
+  },
+  {
+    q: '접속 점검은 어떻게 하나요?',
+    a: '하루 한 번 자동으로 모든 주소에 접속해 응답을 확인합니다. 정상, 주소 이동, 연결 안 됨으로 표시하고, 상태가 바뀐 기록은 점검 기록 페이지에 남깁니다.',
+  },
+  {
+    q: '받은 링크가 공식 주소인지 어떻게 확인하나요?',
+    a: '위의 공식 주소 확인하기 칸에 링크를 붙여넣으면 등록된 공식 도메인과 비교해 일치, 비슷한 가짜 의심, 미등록으로 알려 줍니다. 입력한 주소는 서버로 보내지 않습니다.',
+  },
+  {
+    q: '즐겨찾기는 어디에 저장되나요?',
+    a: '카드의 별표를 누르면 지금 쓰는 브라우저에만 저장됩니다. 회원가입이 필요 없고, 브라우저 데이터를 지우면 함께 사라집니다.',
+  },
+  {
+    q: '홈 화면에 앱처럼 추가할 수 있나요?',
+    a: '네. 안드로이드 크롬은 상단의 홈 화면에 추가 버튼을, 아이폰 사파리는 공유 버튼의 홈 화면에 추가를 누르면 됩니다. 앱처럼 열리고 최근 본 목록은 오프라인에서도 보입니다.',
+  },
+  {
+    q: '주소가 바뀌었거나 틀린 곳을 발견하면요?',
+    a: '페이지 아래 정정·제보 메일로 알려 주세요. 공식 발표나 운영사 공지를 확인한 뒤 고치고, 바뀐 내용은 점검 기록에 남깁니다.',
+  },
+];
+
+const jsonLd = graph(
+  website(),
+  organization(),
+  collectionPage({ path: '/', name: title, description, list: sites, dateModified: checkedAt }),
+);
+---
+<Base title={title} description={description} path="/" jsonLd={jsonLd}>
+  <section class="hero">
+    <h1>{HOME_META.h1}</h1>
+    <ul class="badges" aria-label="링크디시 특징">
+      <li>공식 주소 {n}곳</li>
+      <li>{cats}개 분야</li>
+      <li>매일 접속 점검</li>
+      <li>광고로 순서 안 바꿈</li>
+    </ul>
+    <Checker headingLevel="h2" />
+  </section>
+
+  <nav class="tabs" aria-label="분야">
+    <ul data-tabs>
+      <li><a href="#mine" data-tab="mine">★ 즐겨찾기</a></li>
+      <li><a href="#all" data-tab="all" aria-current="true">전체</a></li>
+      {categories.map((c) => (
+        <li><a href={`/c/${c.slug}/`} data-tab={c.slug}>{c.short}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+  <section id="mine" class="cat-section" data-section="mine" aria-labelledby="mine-title">
+    <div class="cat-head">
+      <h2 id="mine-title">즐겨찾기·최근 방문</h2>
+    </div>
+    <ul class="cards" data-mine-list></ul>
+    <p class="empty" data-mine-empty>
+      카드 오른쪽 위의 ★을 누르면 여기에 고정됩니다. 방문한 사이트도 최근 순으로 모입니다. (이 브라우저에만 저장)
+    </p>
+  </section>
+
+  <div id="all">
+    <h2 class="sr-only">분야별 주소모음</h2>
+    {categories.map((c) => {
+      const list = sitesIn(c.slug);
+      return (
+        <section id={`c-${c.slug}`} class="cat-section" data-section={c.slug} aria-labelledby={`h-${c.slug}`}>
+          <div class="cat-head">
+            <h3 id={`h-${c.slug}`}>{c.name}</h3>
+            <a href={`/c/${c.slug}/`}>{c.short} 사이트 모음 {list.length}곳 →</a>
+          </div>
+          <ul class="cards">
+            {list.map((s) => <SiteCard site={s} />)}
+          </ul>
+        </section>
+      );
+    })}
+  </div>
+
+  <StatusStrip />
+
+  <article class="prose">
+    <h2>링크모음·주소모음 사이트, 고를 때 주의하세요</h2>
+    <p>
+      링크모음, 주소모음, 사이트모음, 주소사이트는 모두 여러 사이트의 주소를 한곳에 모아 두고 눌러서 바로 들어가게 하는
+      페이지를 말합니다. 그런데 검색에 걸리는 링크모음 상당수는 불법 복제 웹툰·영상, 도박, 성인 사이트로 연결됩니다.
+      이런 곳은 접속이 막힐 때마다 “새 주소”로 옮겨 다니고, 화면 곳곳의 광고가 악성 앱 설치나 개인정보 입력으로 이어지는 경우가 많습니다.
+    </p>
+    <ul>
+      <li><strong>주소를 자주 바꾼다</strong> — 차단을 피해 옮겨 다니는 사이트라는 뜻입니다. 공식 서비스는 주소를 거의 바꾸지 않습니다.</li>
+      <li><strong>운영자가 누구인지 없다</strong> — 문의처도, 등록 기준도 밝히지 않는 링크모음은 어디로 보낼지 알 수 없습니다.</li>
+      <li><strong>광고와 목록이 섞여 있다</strong> — 순위를 돈으로 사고파는 곳은 위에 있는 링크일수록 광고일 가능성이 큽니다.</li>
+      <li><strong>앱 설치나 본인 인증을 요구한다</strong> — 바로가기를 누르기만 하면 되는 링크모음이 그 이상을 요구하면 멈추세요.</li>
+    </ul>
+    <p>
+      {SITE.name}는 반대로 만들었습니다. 운영 주체가 확인되는 공식 사이트만 싣고, 광고비로 순서를 바꾸지 않으며,
+      매일 모든 주소에 접속해 결과를 <a href="/status/">점검 기록</a>에 공개합니다. 등록 기준과 운영자 정보는
+      <a href="/about/">소개 페이지</a>에 있습니다. 위험한 곳을 가려내는 7가지 신호는
+      <a href="/guide/">주소모음 사이트 안전하게 고르는 법</a>에 자세히 정리했습니다.
+    </p>
+
+    <h2>링크모음, 이렇게 정리했습니다</h2>
+    <p>
+      {SITE.name}는 자주 쓰는 공식 사이트 {n}곳의 주소를 {cats}개 분야로 나눠 모은 링크모음입니다.
+      포털과 뉴스, 쇼핑과 금융, 정부24·홈택스 같은 공공 서비스, OTT와 정식 웹툰, AI 도구까지
+      검색창에 이름을 치고 광고 사이에서 진짜 주소를 고르는 수고를 줄이려고 만들었습니다.
+      카드를 누르면 새 탭에서 해당 서비스의 공식 주소로 바로 이동합니다.
+    </p>
+
+    <h2>공식 주소만 싣는 기준</h2>
+    <p>
+      등록하는 사이트는 운영 회사나 기관이 확인되는 곳으로 한정합니다. 운영사 공지, 앱 마켓에 적힌 개발자 웹사이트,
+      공공기관 누리집 목록처럼 출처가 분명한 자료로 도메인을 대조한 뒤에 올립니다. 불법 복제물을 공유하거나
+      도박·성인 콘텐츠를 다루는 사이트, 차단을 피하려고 주소를 계속 바꾸는 사이트는 싣지 않습니다.
+      순서는 분야 안에서 이용자가 많이 찾는 곳을 앞에 두며, 광고비를 받고 위치를 바꾸지 않습니다.
+    </p>
+
+    <h2>매일 접속을 점검합니다</h2>
+    <p>
+      링크모음은 시간이 지나면 끊긴 주소가 쌓이기 쉽습니다. {SITE.name}는 하루 한 번 모든 주소에 자동으로 접속해
+      응답을 확인하고, 카드 오른쪽 위의 점으로 상태를 보여 줍니다. 초록은 정상, 주황은 다른 주소로 이동, 빨강은
+      연결 안 됨입니다. 일부 은행·공공 사이트는 자동 접속을 막아 두어 “열림 (자동 확인 제한)”으로 표시되는데,
+      이는 사람이 브라우저로 들어가면 정상적으로 열린다는 뜻입니다. 상태가 바뀐 날짜와 내용은
+      <a href="/status/">점검 기록</a>에서 볼 수 있습니다.
+    </p>
+
+    <h2>받은 링크, 공식 주소인지 먼저 확인하세요</h2>
+    <p>
+      택배·은행·공공기관을 사칭한 문자나 메신저 링크는 진짜 도메인과 한두 글자만 다르게 만들어집니다.
+      <a href="/check/">공식 주소 확인기</a>에 링크를 붙여넣으면 등록된 공식 도메인과 비교해
+      일치하는지, 철자를 비슷하게 흉내 낸 주소인지, 목록에 없는 주소인지 알려 줍니다.
+      비교는 내 브라우저 안에서만 이뤄지고 입력한 주소는 어디에도 전송되지 않습니다.
+    </p>
+
+    <h2>즐겨찾기와 홈 화면 추가로 더 빠르게</h2>
+    <p>
+      자주 가는 사이트는 카드의 ★을 눌러 맨 위 즐겨찾기에 고정해 두세요. 방문한 곳은 최근 방문에 자동으로 모입니다.
+      상단 검색창은 “ㄴㅇㅂ”처럼 초성만 쳐도 찾아 주고, 키보드의 / 키로 바로 열 수 있습니다.
+      휴대폰에서는 홈 화면에 추가하면 앱처럼 한 번에 열 수 있습니다. PC에서는 Ctrl+D(맥은 ⌘+D)로 북마크해 두면 편합니다.
+    </p>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">자주 묻는 질문</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+  </article>
+</Base>

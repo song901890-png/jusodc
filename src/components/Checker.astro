@@ -1,0 +1,28 @@
+---
+interface Props {
+  headingLevel?: 'h2' | 'label';
+}
+const { headingLevel = 'label' } = Astro.props;
+---
+<form class="checker" data-checker novalidate>
+  {headingLevel === 'h2' ? (
+    <h2 style="margin:0 0 8px;font-size:17px"><label for="checker-input">공식 주소 확인하기</label></h2>
+  ) : (
+    <label for="checker-input">공식 주소 확인하기</label>
+  )}
+  <div class="checker-row">
+    <input
+      id="checker-input"
+      name="url"
+      type="text"
+      inputmode="url"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="문자·메신저로 받은 링크를 붙여넣으세요"
+    />
+    <button class="btn btn-primary" type="submit">확인하기</button>
+  </div>
+  <div class="verdict" role="status" aria-live="polite" hidden></div>
+  <p class="small muted" style="margin:8px 0 0">입력한 주소는 이 브라우저에서만 비교하며 어디에도 보내거나 저장하지 않습니다.</p>
+</form>

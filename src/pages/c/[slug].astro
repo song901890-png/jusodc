@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import SiteCard from '../../components/SiteCard.astro';
+import { SITE } from '../../config';
+import { categories, sitesIn, checkedAt, kstDate, displayHost, stateOf, STATE_LABEL, type Category } from '../../lib/data';
+import { graph, collectionPage, breadcrumb } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return categories.map((c) => ({ params: { slug: c.slug }, props: { cat: c } }));
+}
+
+const { cat } = Astro.props as { cat: Category };
+const list = sitesIn(cat.slug);
+const path = `/c/${cat.slug}/`;
+const date = kstDate(checkedAt);
+const others = categories.filter((c) => c.slug !== cat.slug);
+
+const title = `${cat.short} 사이트 모음 ${list.length}곳 — ${cat.name} 공식 주소 | ${SITE.name}`;
+const description = `${cat.name} 분야 공식 사이트 주소 ${list.length}곳을 모았습니다. ${list
+  .slice(0, 3)
+  .map((s) => s.name)
+  .join('·')} 등 바로가기와 매일 접속 점검 결과를 확인하세요.`;
+
+const jsonLd = graph(
+  collectionPage({ path, name: `${cat.name} 사이트 모음`, description, list, dateModified: checkedAt }),
+  breadcrumb([
+    { name: SITE.name, path: '/' },
+    { name: `${cat.short} 사이트 모음`, path },
+  ]),
+);
+---
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <nav class="breadcrumb" aria-label="현재 위치">
+    <a href="/">{SITE.name}</a> › <span aria-current="page">{cat.short} 사이트 모음</span>
+  </nav>
+
+  <section class="hero">
+    <h1>{cat.short} 사이트 모음 — 공식 주소 {list.length}곳</h1>
+    <p class="muted" style="margin:0">{cat.intro}</p>
+  </section>
+
+  <section class="cat-section" aria-labelledby="list-title">
+    <div class="cat-head">
+      <h2 id="list-title">{cat.name} 공식 사이트 바로가기</h2>
+      <span class="small muted">{date ? `${date} 점검` : '첫 자동 점검 전'}</span>
+    </div>
+    <ul class="cards">
+      {list.map((s) => <SiteCard site={s} />)}
+    </ul>
+  </section>
+
+  <article class="prose">
+    <h2>{cat.short} 사이트 이용 팁</h2>
+    <ul>
+      {cat.tips.map((t) => <li>{t}</li>)}
+    </ul>
+
+    <h2>{cat.short} 사이트 공식 도메인·운영사</h2>
+    <p class="small muted">
+      받은 링크의 주소가 아래 공식 도메인으로 끝나지 않으면 누르지 마세요.
+      <a href="/check/">공식 주소 확인기</a>에 붙여넣어 바로 확인할 수 있습니다.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">사이트</th><th scope="col">공식 도메인</th><th scope="col">운영</th><th scope="col">점검</th></tr>
+        </thead>
+        <tbody>
+          {list.map((s) => (
+            <tr>
+              <td>{s.name}</td>
+              <td>{displayHost(s.url)}</td>
+              <td>{s.operator || '—'}</td>
+              <td>{STATE_LABEL[stateOf(s.id)]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>다른 분야 주소모음</h2>
+    <ul class="badges" style="margin:0">
+      {others.map((c) => <li><a href={`/c/${c.slug}/`} style="text-decoration:none">{c.short}</a></li>)}
+    </ul>
+  </article>
+</Base>

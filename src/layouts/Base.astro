@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { SITE } from '../config';
+import { clientIndex } from '../lib/data';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 정규 경로, 예: '/c/webtoon/' (기본: 현재 경로) */
+  path?: string;
+  jsonLd?: object | object[];
+  noindex?: boolean;
+}
+
+const { title, description, path = Astro.url.pathname, jsonLd, noindex = false } = Astro.props;
+const canonical = new URL(path, SITE.url).href;
+const ld = jsonLd ? JSON.stringify(jsonLd) : null;
+const index = JSON.stringify(clientIndex());
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={`${SITE.url}/og.png`} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${SITE.name} — 공식 사이트 주소모음`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content={SITE.themeColor} />
+    {ld && <script is:inline type="application/ld+json" set:html={ld} />}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href="/" aria-label={`${SITE.name} 홈`}>
+          <Logo />
+          <span>{SITE.name}</span>
+        </a>
+        <div class="search" role="search">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          <label for="q" class="sr-only">사이트 이름이나 도메인 검색</label>
+          <input
+            id="q"
+            type="search"
+            placeholder="사이트·도메인 검색 (초성 가능, / 키)"
+            autocomplete="off"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="q-results"
+            aria-autocomplete="list"
+          />
+          <ul id="q-results" class="search-results" role="listbox" hidden></ul>
+        </div>
+        <button id="install" class="btn" type="button" aria-label="홈 화면에 추가">
+          <span aria-hidden="true">＋</span><span class="install-label">홈 화면에 추가</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="사이트 정보">
+          <a href="/about/">소개·등록 기준</a>
+          <a href="/guide/">주소모음 안전 가이드</a>
+          <a href="/check/">공식 주소 확인기</a>
+          <a href="/status/">점검 기록</a>
+          <a href="/privacy/">개인정보·저장 안내</a>
+          <a href={`mailto:${SITE.email}`}>정정·제보</a>
+        </nav>
+        <p style="margin:0">
+          {SITE.name}({SITE.domain})는 공식 사이트 주소를 분야별로 모아 매일 접속을 점검하는 독립 디렉터리입니다.
+          수록된 서비스와 제휴 관계가 없으며, 광고비로 순서를 정하지 않습니다.
+        </p>
+        <p style="margin:6px 0 0">© {SITE.year} {SITE.name} · {SITE.domain}</p>
+      </div>
+    </footer>
+
+    <div id="install-sheet" class="sheet" role="dialog" aria-modal="false" aria-labelledby="install-sheet-text" hidden>
+      <p id="install-sheet-text"></p>
+      <div class="actions">
+        <button class="btn" type="button" data-sheet-close>닫기</button>
+        <button class="btn btn-primary" type="button" data-sheet-install hidden>설치</button>
+      </div>
+    </div>
+
+    <script is:inline id="site-index" type="application/json" set:html={index} />
+    <script>
+      import '../scripts/app.ts';
+    </script>
+  </body>
+</html>

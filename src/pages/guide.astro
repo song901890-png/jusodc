@@ -1,0 +1,150 @@
+---
+// 정보형 가이드: '주소모음 사이트 안전' 류 검색을 받아 홈(링크모음 목록)·확인기로 연결한다.
+// 홈의 메인 키워드(링크모음·주소모음 목록)와 겹치지 않게 '고르는 법·위험 신호' 의도에 집중한다.
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+import { sites, categories } from '../lib/data';
+import { graph, article, organization, breadcrumb } from '../lib/schema';
+
+const PUBLISHED = '2026-11-16';
+const UPDATED = '2026-11-16';
+
+const title = `주소모음 사이트 안전하게 고르는 법 — 위험한 링크모음 7가지 신호 | ${SITE.name}`;
+const h1 = '주소모음 사이트, 안전하게 고르는 법';
+const description =
+  '주소모음·링크모음 사이트 중 불법·사칭으로 이어지는 곳을 가려내는 7가지 위험 신호와, 받은 링크가 공식 주소인지 확인하는 3단계를 정리했습니다.';
+
+const signals = [
+  {
+    name: '“최신 주소”, “주소 변경 안내”를 내세운다',
+    why: '공식 서비스는 주소를 거의 바꾸지 않습니다. 주소를 자주 바꾸는 곳은 접속 차단을 피해 옮겨 다니는 사이트일 가능성이 큽니다.',
+  },
+  {
+    name: '운영자와 문의처가 없다',
+    why: '누가 운영하는지, 잘못된 링크를 어디에 알리는지 밝히지 않으면 목록이 어디로 보내는지 책임질 사람도 없습니다.',
+  },
+  {
+    name: '목록 위쪽이 광고 배너다',
+    why: '순서를 돈으로 사고파는 곳에서는 눈에 잘 띄는 링크일수록 광고주가 고른 링크입니다.',
+  },
+  {
+    name: '도박·성인 배너가 함께 걸려 있다',
+    why: '불법 웹툰·영상 링크모음은 대부분 불법 도박 광고로 수익을 냅니다. 배너 하나로 그 사이트의 성격을 알 수 있습니다.',
+  },
+  {
+    name: '텔레그램 등 외부 메신저로 “새 주소를 받으라”고 한다',
+    why: '검색에서 사라질 것을 전제로 운영한다는 뜻입니다. 메신저로 받은 링크는 출처를 확인하기 더 어렵습니다.',
+  },
+  {
+    name: '앱 설치나 본인 인증을 요구한다',
+    why: '바로가기는 누르기만 하면 됩니다. APK 설치, 휴대폰 인증, 결제를 요구하면 그 자체가 위험 신호입니다.',
+  },
+  {
+    name: '유명 사이트와 철자가 한두 글자 다른 주소가 섞여 있다',
+    why: 'naver → naverr, l(엘) → 1처럼 비슷하게 만든 주소는 로그인 정보를 노리는 사칭 사이트에서 흔히 쓰입니다.',
+  },
+];
+
+const jsonLd = graph(
+  article({ path: '/guide/', headline: h1, description, datePublished: PUBLISHED, dateModified: UPDATED }),
+  organization(),
+  breadcrumb([
+    { name: SITE.name, path: '/' },
+    { name: '주소모음 안전 가이드', path: '/guide/' },
+  ]),
+);
+---
+<Base title={title} description={description} path="/guide/" jsonLd={jsonLd}>
+  <nav class="breadcrumb" aria-label="현재 위치">
+    <a href="/">{SITE.name}</a> › <span aria-current="page">주소모음 안전 가이드</span>
+  </nav>
+
+  <section class="hero">
+    <h1>{h1}</h1>
+    <p class="muted" style="margin:0">
+      주소모음·링크모음은 편하지만, 잘못 고르면 불법 사이트나 사칭 페이지로 가는 지름길이 됩니다.
+      위험한 곳을 가려내는 신호와 받은 링크를 확인하는 방법을 정리했습니다.
+    </p>
+    <p class="small muted" style="margin:8px 0 0">
+      작성 <time datetime={PUBLISHED}>{PUBLISHED}</time>
+      {UPDATED !== PUBLISHED && <> · 수정 <time datetime={UPDATED}>{UPDATED}</time></>}
+      · {SITE.name} 편집
+    </p>
+  </section>
+
+  <article class="prose">
+    <h2>주소모음 사이트는 왜 위험한 곳이 많을까</h2>
+    <p>
+      주소모음은 원래 자주 가는 사이트의 주소를 한 페이지에 모아 두는 단순한 서비스입니다. 그런데 검색에 보이는 주소모음 중 상당수는
+      목적이 다릅니다. 불법 웹툰·영상 공유, 스포츠 무단 중계, 도박 사이트는 접속이 차단될 때마다 주소를 바꾸는데,
+      바뀐 주소를 알려 주는 “중간 다리” 역할을 주소모음이 맡는 경우가 많기 때문입니다.
+    </p>
+    <p>
+      이런 주소모음은 방문자를 그 사이트들로 보내고 광고비를 받아 운영됩니다. 그래서 목록 자체보다 광고 배너가 많고,
+      누르는 링크마다 다른 광고 페이지나 앱 설치 화면이 열리기도 합니다. 이용자 입장에서는 원하던 사이트에 가기도 전에
+      악성 앱, 개인정보 입력 화면, 결제 유도에 먼저 노출됩니다.
+    </p>
+
+    <h2>위험한 주소모음·링크모음, 7가지 신호</h2>
+    <p>아래 중 하나라도 해당하면 그 목록의 링크는 누르지 않는 편이 안전합니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">#</th><th scope="col">위험 신호</th><th scope="col">왜 위험한가</th></tr>
+        </thead>
+        <tbody>
+          {signals.map((s, i) => (
+            <tr>
+              <td>{i + 1}</td>
+              <td><strong>{s.name}</strong></td>
+              <td>{s.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>믿을 수 있는 주소모음의 조건</h2>
+    <ol>
+      <li><strong>등록 기준을 공개한다</strong> — 어떤 사이트를 싣고 어떤 사이트는 싣지 않는지 글로 밝혀 둡니다.</li>
+      <li><strong>운영자와 연락처가 있다</strong> — 잘못된 주소를 제보할 곳이 있고, 실제로 고쳐집니다.</li>
+      <li><strong>공식 도메인을 확인한다</strong> — 운영사 공지, 앱 마켓의 개발자 웹사이트처럼 출처가 분명한 자료와 대조합니다.</li>
+      <li><strong>끊긴 링크를 점검한다</strong> — 언제 마지막으로 확인했는지 날짜를 보여 줍니다.</li>
+      <li><strong>광고와 목록을 구분한다</strong> — 광고가 있다면 “광고”라고 표시하고, 광고비로 순서를 바꾸지 않습니다.</li>
+    </ol>
+    <p>
+      {SITE.name}는 이 다섯 가지를 지키려고 만든 주소모음입니다. 공식 사이트 {sites.length}곳만 {categories.length}개 분야로 싣고,
+      매일 모든 주소에 접속해 결과를 <a href="/status/">점검 기록</a>에 공개합니다. 등록 기준은 <a href="/about/">소개 페이지</a>에 있습니다.
+    </p>
+
+    <h2>받은 링크가 공식 주소인지 확인하는 3단계</h2>
+    <ol>
+      <li>
+        <strong>주소의 “끝”을 보세요.</strong> 사이트의 실제 주인은 첫 번째 <code>/</code> 바로 앞, 맨 끝의 도메인입니다.
+        <code>naver.com.login-check.xyz</code>는 네이버가 아니라 <code>login-check.xyz</code>의 사이트입니다.
+      </li>
+      <li>
+        <strong>공식 주소와 비교하세요.</strong> <a href="/check/">공식 주소 확인기</a>에 링크를 붙여넣으면 등록된 공식 도메인과 비교해
+        일치하는지, 철자를 흉내 낸 주소인지 알려 줍니다. 입력한 주소는 어디에도 전송되지 않습니다.
+      </li>
+      <li>
+        <strong>링크 대신 직접 들어가세요.</strong> 문자·메신저의 링크를 누르지 말고, 즐겨찾기나 <a href="/">링크디시 목록</a>의 공식 주소로 직접 접속해
+        같은 내용이 있는지 확인하세요.
+      </li>
+    </ol>
+
+    <h2>이미 의심스러운 링크를 눌렀다면</h2>
+    <ul>
+      <li><strong>앱을 설치했다면</strong> — 휴대폰을 비행기 모드로 바꾸고 설치한 앱을 지운 뒤, 통신사나 보안 앱으로 점검하세요.</li>
+      <li><strong>아이디·비밀번호를 입력했다면</strong> — 해당 서비스의 비밀번호를 바로 바꾸고, 같은 비밀번호를 쓰는 다른 사이트도 함께 바꾸세요. 2단계 인증을 켜 두면 안전합니다.</li>
+      <li><strong>계좌·카드 정보를 입력했거나 돈을 보냈다면</strong> — 은행·카드사 고객센터나 112에 바로 연락해 지급 정지를 요청하세요. 금융 관련 상담은 금융감독원 1332에서 받을 수 있습니다.</li>
+      <li><strong>스미싱 문자를 받았다면</strong> — 한국인터넷진흥원 118 상담센터(국번 없이 118)에 신고할 수 있습니다.</li>
+    </ul>
+
+    <h2>분야별 공식 주소모음 바로가기</h2>
+    <p>자주 쓰는 분야의 공식 사이트만 모아 둔 목록입니다.</p>
+    <ul class="badges" style="margin:0">
+      {categories.map((c) => <li><a href={`/c/${c.slug}/`} style="text-decoration:none">{c.short} 사이트 모음</a></li>)}
+    </ul>
+  </article>
+</Base>

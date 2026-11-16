@@ -1,0 +1,19 @@
+---
+import { checkedAt, kstDate, stateCounts } from '../lib/data';
+
+const c = stateCounts();
+const date = kstDate(checkedAt);
+---
+<section class="status-strip" aria-labelledby="status-strip-title">
+  <h2 id="status-strip-title" class="sr-only">오늘의 사이트모음 접속 점검</h2>
+  {date ? (
+    <span>점검 <time datetime={date}>{date}</time></span>
+  ) : (
+    <span>첫 자동 점검 전</span>
+  )}
+  <span class="lg"><i style="background:var(--ok)"></i>열림 {c.ok + c.restricted}</span>
+  <span class="lg"><i style="background:var(--warn)"></i>주소 이동 {c.moved}</span>
+  <span class="lg"><i style="background:var(--bad)"></i>연결 안 됨 {c.error}</span>
+  {c.unknown > 0 && <span class="lg"><i style="background:var(--idle)"></i>점검 전 {c.unknown}</span>}
+  <a href="/status/">점검 기록 보기 →</a>
+</section>

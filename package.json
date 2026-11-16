@@ -1,0 +1,21 @@
+{
+  "name": "jusodc",
+  "description": "링크디시 — 주소모음·링크모음 (jusodc.com)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check:links": "node --max-http-header-size=65536 scripts/check-links.mjs",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.5",
+    "astro": "^7.4.12",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "wrangler": "^4.162.0"
+  }
+}

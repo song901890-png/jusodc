@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+import { categories } from '../lib/data';
+---
+<Base title={`페이지를 찾을 수 없습니다 | ${SITE.name}`} description="요청한 페이지가 없습니다." path="/404/" noindex>
+  <section class="hero">
+    <h1>페이지를 찾을 수 없습니다</h1>
+    <p class="muted">주소가 바뀌었거나 없는 페이지입니다. 위 검색창에서 사이트 이름을 찾거나 아래 분야로 이동하세요.</p>
+    <p><a class="btn btn-primary" href="/">주소모음 홈으로</a></p>
+    <ul class="badges">
+      {categories.map((c) => <li><a href={`/c/${c.slug}/`} style="text-decoration:none">{c.short}</a></li>)}
+    </ul>
+  </section>
+</Base>

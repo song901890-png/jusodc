@@ -1,0 +1,23 @@
+{
+  // Cloudflare Workers 정적 자산 배포 설정. 배포: npm run build && npx wrangler deploy
+  "name": "jusodc",
+  "compatibility_date": "2026-11-13",
+  // www → 루트 301 만 처리하는 작은 스크립트 (worker/index.js)
+  "main": "worker/index.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // www 요청도 스크립트를 먼저 거쳐야 리다이렉트할 수 있다
+    "run_worker_first": true,
+    // /about → /about/ 처럼 트레일링 슬래시로 맞춘다 (astro trailingSlash: 'always' 와 일치)
+    "html_handling": "force-trailing-slash",
+    // 없는 주소는 dist/404.html 을 404 상태로 응답
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "jusodc.com", "custom_domain": true },
+    { "pattern": "www.jusodc.com", "custom_domain": true }
+  ],
+  // 임시 주소(workers.dev)는 정식 도메인과 중복 색인되지 않게 끈다
+  "workers_dev": false
+}

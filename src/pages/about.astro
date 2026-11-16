@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+import { sites, categories } from '../lib/data';
+import { graph, webPage, organization, breadcrumb } from '../lib/schema';
+
+const title = `${SITE.name} 소개 · 등록 기준과 광고 원칙`;
+const description = `${SITE.name}(${SITE.domain})가 어떤 기준으로 공식 사이트를 고르고 점검하는지, 광고와 제보는 어떻게 다루는지 안내합니다.`;
+const jsonLd = graph(
+  webPage({ path: '/about/', name: `${SITE.name} 소개`, description, type: 'AboutPage' }),
+  organization(),
+  breadcrumb([
+    { name: SITE.name, path: '/' },
+    { name: '소개', path: '/about/' },
+  ]),
+);
+---
+<Base title={title} description={description} path="/about/" jsonLd={jsonLd}>
+  <nav class="breadcrumb" aria-label="현재 위치">
+    <a href="/">{SITE.name}</a> › <span aria-current="page">소개</span>
+  </nav>
+  <section class="hero">
+    <h1>{SITE.name} 소개</h1>
+    <p class="muted" style="margin:0">
+      {SITE.name}는 공식 사이트 {sites.length}곳의 주소를 {categories.length}개 분야로 정리하고 매일 접속을 점검하는 주소모음입니다.
+    </p>
+  </section>
+
+  <article class="prose">
+    <h2>등록 기준</h2>
+    <ol>
+      <li>운영 회사나 기관이 확인되는 공식 사이트만 싣습니다.</li>
+      <li>도메인은 운영사 공지, 앱 마켓의 개발자 웹사이트, 공공기관 누리집 목록 등 출처가 분명한 자료와 대조합니다.</li>
+      <li>저작권을 침해하는 복제물 공유, 도박·사행성, 성인, 무단 중계, 불법 금융 사이트는 싣지 않습니다.</li>
+      <li>차단을 피하려고 주소를 계속 바꾸는 사이트는 싣지 않습니다.</li>
+      <li>자동 점검에서 오랫동안 연결되지 않거나 서비스가 끝난 사이트는 목록에서 내립니다.</li>
+    </ol>
+
+    <h2>순서와 광고 원칙</h2>
+    <ul>
+      <li>분야 안의 순서는 이용자가 많이 찾는 곳을 앞에 두는 편집 기준으로 정합니다.</li>
+      <li>광고비나 제휴를 이유로 순서를 바꾸거나 사이트를 추가하지 않습니다.</li>
+      <li>앞으로 광고를 싣게 되면 목록과 분명히 구분되는 위치에 “광고” 표시와 함께 둡니다.</li>
+      <li>외부 링크에는 rel="nofollow"를 붙여, 검색 순위를 사고파는 용도로 쓰이지 않게 합니다.</li>
+    </ul>
+
+    <h2>점검 방법</h2>
+    <p>
+      매일 한 번 자동 스크립트가 모든 주소에 접속해 응답 코드와 최종 도착 주소를 기록합니다.
+      결과와 변경 내역은 <a href="/status/">점검 기록</a>에 공개합니다.
+    </p>
+
+    <h2>정정·제보</h2>
+    <p>
+      주소가 바뀌었거나 잘못된 곳, 추가할 만한 공식 사이트가 있으면
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>로 알려 주세요.
+      공식 발표를 확인한 뒤 반영하며, 위 등록 기준에 맞지 않는 사이트는 싣지 않습니다.
+    </p>
+
+    <h2>운영자 정보</h2>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><th scope="row">서비스명</th><td>{SITE.name} ({SITE.nameEn})</td></tr>
+          <tr><th scope="row">도메인</th><td>{SITE.domain}</td></tr>
+          <tr><th scope="row">문의</th><td>{SITE.email}</td></tr>
+          <tr><th scope="row">운영 시작</th><td>{SITE.since}년</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</Base>

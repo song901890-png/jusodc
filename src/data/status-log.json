@@ -1,0 +1,47 @@
+[
+  {
+    "date": "2026-11-16",
+    "id": "facebook",
+    "from": "error",
+    "to": "restricted"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "cjlogistics",
+    "from": "error",
+    "to": "ok"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "11st",
+    "from": "unknown",
+    "to": "error"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "danawa",
+    "from": "unknown",
+    "to": "error",
+    "note": "EAI_AGAIN"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "work24",
+    "from": "unknown",
+    "to": "error",
+    "note": "timeout"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "facebook",
+    "from": "unknown",
+    "to": "error"
+  },
+  {
+    "date": "2026-11-16",
+    "id": "cjlogistics",
+    "from": "unknown",
+    "to": "error",
+    "note": "UND_ERR_CONNECT_TIMEOUT"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "링크디시 — 공식 사이트 주소모음",
+  "short_name": "링크디시",
+  "description": "공식 사이트 주소를 분야별로 모아 매일 점검하는 주소모음·링크모음",
+  "lang": "ko-KR",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#2754e6",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "공식 주소 확인기", "url": "/check/", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

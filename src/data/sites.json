@@ -1,0 +1,76 @@
+[
+  { "id": "naver", "name": "네이버", "url": "https://www.naver.com/", "domain": "naver.com", "category": "search", "operator": "네이버(주)", "aliases": ["naver", "네이버 검색"], "popular": true },
+  { "id": "daum", "name": "다음", "url": "https://www.daum.net/", "domain": "daum.net", "category": "search", "operator": "카카오", "aliases": ["daum", "다음 검색"], "popular": true },
+  { "id": "google", "name": "구글", "url": "https://www.google.co.kr/", "domain": "google.co.kr", "category": "search", "operator": "Google", "aliases": ["google", "구글 검색"], "popular": true },
+  { "id": "bing", "name": "빙", "url": "https://www.bing.com/", "domain": "bing.com", "category": "search", "operator": "Microsoft", "aliases": ["bing"] },
+
+  { "id": "naver-news", "name": "네이버 뉴스", "url": "https://news.naver.com/", "domain": "naver.com", "category": "news", "operator": "네이버(주)", "aliases": ["네이버뉴스"] },
+  { "id": "daum-news", "name": "다음 뉴스", "url": "https://news.daum.net/", "domain": "daum.net", "category": "news", "operator": "카카오", "aliases": ["다음뉴스"] },
+  { "id": "kbs-news", "name": "KBS 뉴스", "url": "https://news.kbs.co.kr/", "domain": "kbs.co.kr", "category": "news", "operator": "한국방송공사", "aliases": ["kbs", "케이비에스"] },
+  { "id": "yna", "name": "연합뉴스", "url": "https://www.yna.co.kr/", "domain": "yna.co.kr", "category": "news", "operator": "연합뉴스", "aliases": ["yonhap"] },
+
+  { "id": "coupang", "name": "쿠팡", "url": "https://www.coupang.com/", "domain": "coupang.com", "category": "shopping", "operator": "쿠팡(주)", "aliases": ["coupang"], "popular": true },
+  { "id": "11st", "name": "11번가", "url": "https://www.11st.co.kr/", "domain": "11st.co.kr", "category": "shopping", "operator": "11번가(주)", "aliases": ["11st", "십일번가"] },
+  { "id": "gmarket", "name": "G마켓", "url": "https://www.gmarket.co.kr/", "domain": "gmarket.co.kr", "category": "shopping", "operator": "지마켓", "aliases": ["gmarket", "지마켓"] },
+  { "id": "musinsa", "name": "무신사", "url": "https://www.musinsa.com/", "domain": "musinsa.com", "category": "shopping", "operator": "무신사", "aliases": ["musinsa"] },
+  { "id": "danawa", "name": "다나와", "url": "https://www.danawa.com/", "domain": "danawa.com", "category": "shopping", "operator": "다나와", "aliases": ["danawa", "가격비교"] },
+
+  { "id": "kbstar", "name": "KB국민은행", "url": "https://www.kbstar.com/", "domain": "kbstar.com", "category": "finance", "operator": "KB국민은행", "aliases": ["국민은행", "kb", "kbstar"], "popular": true },
+  { "id": "shinhan", "name": "신한은행", "url": "https://www.shinhan.com/", "domain": "shinhan.com", "category": "finance", "operator": "신한은행", "aliases": ["shinhan"] },
+  { "id": "woori", "name": "우리은행", "url": "https://www.wooribank.com/", "domain": "wooribank.com", "category": "finance", "operator": "우리은행", "aliases": ["woori"] },
+  { "id": "hana", "name": "하나은행", "url": "https://www.kebhana.com/", "domain": "kebhana.com", "category": "finance", "operator": "하나은행", "aliases": ["hana", "kebhana"] },
+  { "id": "toss", "name": "토스", "url": "https://toss.im/", "domain": "toss.im", "category": "finance", "operator": "비바리퍼블리카", "aliases": ["toss"] },
+  { "id": "kakaobank", "name": "카카오뱅크", "url": "https://www.kakaobank.com/", "domain": "kakaobank.com", "category": "finance", "operator": "카카오뱅크", "aliases": ["kakaobank"] },
+
+  { "id": "gov24", "name": "정부24", "url": "https://www.gov.kr/", "domain": "gov.kr", "category": "gov", "operator": "행정안전부", "aliases": ["gov24", "민원24"], "popular": true },
+  { "id": "hometax", "name": "홈택스", "url": "https://www.hometax.go.kr/", "domain": "hometax.go.kr", "category": "gov", "operator": "국세청", "aliases": ["hometax", "국세청"], "popular": true },
+  { "id": "nhis", "name": "국민건강보험", "url": "https://www.nhis.or.kr/", "domain": "nhis.or.kr", "category": "gov", "operator": "국민건강보험공단", "aliases": ["건강보험", "nhis"] },
+  { "id": "nps", "name": "국민연금", "url": "https://www.nps.or.kr/", "domain": "nps.or.kr", "category": "gov", "operator": "국민연금공단", "aliases": ["nps"] },
+  { "id": "ecrm", "name": "사이버범죄 신고시스템", "url": "https://ecrm.police.go.kr/", "domain": "ecrm.police.go.kr", "category": "gov", "operator": "경찰청", "aliases": ["경찰청 신고", "사이버수사"] },
+  { "id": "epost", "name": "인터넷우체국", "url": "https://www.epost.go.kr/", "domain": "epost.go.kr", "category": "gov", "operator": "우정사업본부", "aliases": ["우체국", "epost"] },
+
+  { "id": "netflix", "name": "넷플릭스", "url": "https://www.netflix.com/", "domain": "netflix.com", "category": "video", "operator": "Netflix", "aliases": ["netflix"], "popular": true },
+  { "id": "tving", "name": "티빙", "url": "https://www.tving.com/", "domain": "tving.com", "category": "video", "operator": "티빙", "aliases": ["tving"] },
+  { "id": "wavve", "name": "웨이브", "url": "https://www.wavve.com/", "domain": "wavve.com", "category": "video", "operator": "콘텐츠웨이브", "aliases": ["wavve"] },
+  { "id": "coupangplay", "name": "쿠팡플레이", "url": "https://www.coupangplay.com/", "domain": "coupangplay.com", "category": "video", "operator": "쿠팡", "aliases": ["coupang play"] },
+  { "id": "youtube", "name": "유튜브", "url": "https://www.youtube.com/", "domain": "youtube.com", "category": "video", "operator": "Google", "aliases": ["youtube"], "popular": true },
+  { "id": "disneyplus", "name": "디즈니+", "url": "https://www.disneyplus.com/", "domain": "disneyplus.com", "category": "video", "operator": "The Walt Disney Company", "aliases": ["disney plus", "디즈니플러스"] },
+
+  { "id": "naver-webtoon", "name": "네이버웹툰", "url": "https://comic.naver.com/", "domain": "naver.com", "category": "webtoon", "operator": "네이버웹툰", "aliases": ["네이버 웹툰", "naver webtoon"], "popular": true },
+  { "id": "kakao-webtoon", "name": "카카오웹툰", "url": "https://webtoon.kakao.com/", "domain": "kakao.com", "category": "webtoon", "operator": "카카오엔터테인먼트", "aliases": ["카카오 웹툰"] },
+  { "id": "kakaopage", "name": "카카오페이지", "url": "https://page.kakao.com/", "domain": "kakao.com", "category": "webtoon", "operator": "카카오엔터테인먼트", "aliases": ["카카오 페이지"] },
+  { "id": "ridi", "name": "리디", "url": "https://ridibooks.com/", "domain": "ridibooks.com", "category": "webtoon", "operator": "리디", "aliases": ["리디북스", "ridibooks"] },
+  { "id": "munpia", "name": "문피아", "url": "https://www.munpia.com/", "domain": "munpia.com", "category": "webtoon", "operator": "문피아", "aliases": ["munpia"] },
+  { "id": "novelpia", "name": "노벨피아", "url": "https://novelpia.com/", "domain": "novelpia.com", "category": "webtoon", "operator": "", "aliases": ["novelpia"] },
+
+  { "id": "chatgpt", "name": "ChatGPT", "url": "https://chatgpt.com/", "domain": "chatgpt.com", "category": "ai", "operator": "OpenAI", "aliases": ["챗gpt", "챗지피티", "openai"], "popular": true },
+  { "id": "claude", "name": "Claude", "url": "https://claude.ai/", "domain": "claude.ai", "category": "ai", "operator": "Anthropic", "aliases": ["클로드"] },
+  { "id": "gemini", "name": "Gemini", "url": "https://gemini.google.com/", "domain": "google.com", "category": "ai", "operator": "Google", "aliases": ["제미나이", "제미니"] },
+  { "id": "wrtn", "name": "뤼튼", "url": "https://wrtn.ai/", "domain": "wrtn.ai", "category": "ai", "operator": "뤼튼테크놀로지스", "aliases": ["wrtn"] },
+  { "id": "perplexity", "name": "Perplexity", "url": "https://www.perplexity.ai/", "domain": "perplexity.ai", "category": "ai", "operator": "Perplexity AI", "aliases": ["퍼플렉시티"] },
+
+  { "id": "naver-map", "name": "네이버 지도", "url": "https://map.naver.com/", "domain": "naver.com", "category": "map", "operator": "네이버(주)", "aliases": ["네이버지도"], "popular": true },
+  { "id": "kakao-map", "name": "카카오맵", "url": "https://map.kakao.com/", "domain": "kakao.com", "category": "map", "operator": "카카오", "aliases": ["카카오 지도", "다음 지도"] },
+  { "id": "korail", "name": "코레일", "url": "https://www.korail.com/", "domain": "korail.com", "altDomains": ["letskorail.com"], "category": "map", "operator": "한국철도공사", "aliases": ["ktx", "기차표", "letskorail"] },
+  { "id": "srt", "name": "SRT", "url": "https://etk.srail.kr/", "domain": "srail.kr", "category": "map", "operator": "에스알", "aliases": ["srail", "에스알티"] },
+
+  { "id": "saramin", "name": "사람인", "url": "https://www.saramin.co.kr/", "domain": "saramin.co.kr", "category": "job", "operator": "사람인", "aliases": ["saramin"] },
+  { "id": "jobkorea", "name": "잡코리아", "url": "https://www.jobkorea.co.kr/", "domain": "jobkorea.co.kr", "category": "job", "operator": "잡코리아", "aliases": ["jobkorea"] },
+  { "id": "work24", "name": "고용24", "url": "https://www.work24.go.kr/", "domain": "work24.go.kr", "category": "job", "operator": "고용노동부", "aliases": ["워크넷", "고용센터"] },
+  { "id": "qnet", "name": "큐넷", "url": "https://www.q-net.or.kr/", "domain": "q-net.or.kr", "category": "job", "operator": "한국산업인력공단", "aliases": ["qnet", "자격증 접수"] },
+  { "id": "ebs", "name": "EBS", "url": "https://www.ebs.co.kr/", "domain": "ebs.co.kr", "category": "job", "operator": "한국교육방송공사", "aliases": ["이비에스"] },
+  { "id": "kmooc", "name": "K-MOOC", "url": "https://www.kmooc.kr/", "domain": "kmooc.kr", "category": "job", "operator": "국가평생교육진흥원", "aliases": ["케이무크"] },
+
+  { "id": "instagram", "name": "인스타그램", "url": "https://www.instagram.com/", "domain": "instagram.com", "category": "community", "operator": "Meta", "aliases": ["instagram", "인스타"] },
+  { "id": "x", "name": "X (트위터)", "url": "https://x.com/", "domain": "x.com", "category": "community", "operator": "X Corp.", "aliases": ["트위터", "twitter"] },
+  { "id": "facebook", "name": "페이스북", "url": "https://www.facebook.com/", "domain": "facebook.com", "category": "community", "operator": "Meta", "aliases": ["facebook"] },
+  { "id": "naver-cafe", "name": "네이버 카페", "url": "https://section.cafe.naver.com/", "domain": "naver.com", "category": "community", "operator": "네이버(주)", "aliases": ["카페"] },
+  { "id": "naver-blog", "name": "네이버 블로그", "url": "https://section.blog.naver.com/", "domain": "naver.com", "category": "community", "operator": "네이버(주)", "aliases": ["블로그"] },
+
+  { "id": "baemin", "name": "배달의민족", "url": "https://www.baemin.com/", "domain": "baemin.com", "category": "life", "operator": "우아한형제들", "aliases": ["배민", "baemin"], "popular": true },
+  { "id": "yogiyo", "name": "요기요", "url": "https://www.yogiyo.co.kr/", "domain": "yogiyo.co.kr", "category": "life", "operator": "위대한상상", "aliases": ["yogiyo"] },
+  { "id": "daangn", "name": "당근", "url": "https://www.daangn.com/", "domain": "daangn.com", "category": "life", "operator": "당근마켓", "aliases": ["당근마켓", "daangn"] },
+  { "id": "bunjang", "name": "번개장터", "url": "https://m.bunjang.co.kr/", "domain": "bunjang.co.kr", "category": "life", "operator": "번개장터", "aliases": ["번장"] },
+  { "id": "cjlogistics", "name": "CJ대한통운", "url": "https://www.cjlogistics.com/", "domain": "cjlogistics.com", "category": "life", "operator": "CJ대한통운", "aliases": ["택배 조회", "대한통운"] },
+  { "id": "weather", "name": "기상청 날씨누리", "url": "https://www.weather.go.kr/", "domain": "weather.go.kr", "category": "life", "operator": "기상청", "aliases": ["날씨", "기상청"] }
+]
