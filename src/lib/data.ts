@@ -28,6 +28,8 @@ export type Site = {
   verifiedAt?: string;
   /** true 이면 확인될 때까지 목록·확인기·구조화 데이터에서 뺀다 (점검 스크립트는 계속 확인) */
   hold?: boolean;
+  /** 사람이 브라우저로 정상 확인했지만 자동 점검에는 오류를 주는 사이트 → '자동 확인 제한' 으로 표시 */
+  autoCheckBlocked?: boolean;
 };
 
 // ok = 정상, restricted = 열리지만 자동 확인 차단(403 등), moved = 다른 도메인으로 이동, error = 연결 실패

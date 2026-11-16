@@ -56,6 +56,8 @@ async function probe(site) {
     else if (code < 400) state = 'ok';
     // 서버가 응답은 했지만 자동 접속을 거절한 경우 (봇 차단·지역 차단). 사람이 열면 대부분 정상.
     else if (BLOCKED_CODES.includes(code)) state = 'restricted';
+    // 사람이 브라우저로 정상 확인했지만 봇에게 5xx 등을 주는 사이트 (sites.json 의 autoCheckBlocked)
+    else if (site.autoCheckBlocked) state = 'restricted';
     else state = 'error';
     return { state, code, ms, ...(finalUrl !== site.url ? { finalUrl } : {}) };
   } catch (err) {
