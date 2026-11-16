@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-11-16",
+    "id": "danawa",
+    "from": "error",
+    "to": "ok"
+  },
+  {
+    "date": "2026-11-16",
     "id": "facebook",
     "from": "error",
     "to": "restricted"
