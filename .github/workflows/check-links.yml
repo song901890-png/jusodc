@@ -53,5 +53,7 @@ jobs:
       - name: Cloudflare 배포
         run: npx wrangler deploy
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # 저장소 Secret 이름은 밑줄 없이 CLOUDFLAREAPITOKEN / CLOUDFLAREACCOUNTID 로 등록돼 있다.
+          # wrangler 가 읽는 환경 변수 이름은 밑줄이 있는 이름이어야 한다.
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLAREAPITOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLAREACCOUNTID }}
