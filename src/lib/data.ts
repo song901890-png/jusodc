@@ -22,6 +22,12 @@ export type Site = {
   popular?: boolean;
   /** 이전·보조 공식 도메인 (예: 코레일 letskorail.com) */
   altDomains?: string[];
+  /** 공식 도메인을 확인한 출처 URL (앱 마켓 개발자 정보, 운영사 공지 등) */
+  source?: string;
+  /** 사람이 출처와 대조해 확인한 날짜 'YYYY-MM-DD' */
+  verifiedAt?: string;
+  /** true 이면 확인될 때까지 목록·확인기·구조화 데이터에서 뺀다 (점검 스크립트는 계속 확인) */
+  hold?: boolean;
 };
 
 // ok = 정상, restricted = 열리지만 자동 확인 차단(403 등), moved = 다른 도메인으로 이동, error = 연결 실패
@@ -39,7 +45,8 @@ export type CheckResult = {
 export type LogEntry = { date: string; id: string; from: CheckState; to: CheckState; note?: string };
 
 export const categories = categoriesJson as Category[];
-export const sites = sitesJson as Site[];
+// 보류(hold) 항목은 공개하지 않는다. 확인기도 이 목록만 '공식'으로 판정한다.
+export const sites = (sitesJson as Site[]).filter((s) => !s.hold);
 const status = statusJson as { checkedAt: string | null; results: Record<string, CheckResult> };
 export const statusLog = (logJson as LogEntry[]).slice(0, 50);
 
