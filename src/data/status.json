@@ -1,336 +1,335 @@
 {
-  "checkedAt": "2026-11-16T09:29:53.288Z",
+  "checkedAt": "2026-11-17T03:39:03.608Z",
   "results": {
     "bing": {
       "state": "ok",
       "code": 200,
-      "ms": 683
+      "ms": 597
     },
     "google": {
       "state": "ok",
       "code": 200,
-      "ms": 781
+      "ms": 600
     },
     "naver": {
       "state": "ok",
       "code": 200,
-      "ms": 909
+      "ms": 688
     },
     "kbs-news": {
       "state": "ok",
       "code": 200,
-      "ms": 1439
+      "ms": 1043
     },
     "naver-news": {
       "state": "ok",
       "code": 200,
-      "ms": 1520
+      "ms": 1221
     },
     "coupang": {
       "state": "restricted",
       "code": 403,
-      "ms": 1316
+      "ms": 882
     },
     "gmarket": {
       "state": "restricted",
       "code": 403,
-      "ms": 1283
-    },
-    "daum": {
-      "state": "ok",
-      "code": 200,
-      "ms": 2598
-    },
-    "daum-news": {
-      "state": "ok",
-      "code": 200,
-      "ms": 2680
+      "ms": 1152
     },
     "danawa": {
       "state": "ok",
       "code": 200,
-      "ms": 1262
+      "ms": 723
+    },
+    "daum-news": {
+      "state": "ok",
+      "code": 200,
+      "ms": 2057
+    },
+    "daum": {
+      "state": "ok",
+      "code": 200,
+      "ms": 2077
     },
     "shinhan": {
       "state": "ok",
       "code": 200,
-      "ms": 1275
+      "ms": 997
     },
     "yna": {
       "state": "ok",
       "code": 200,
-      "ms": 3495
+      "ms": 2815
     },
     "woori": {
       "state": "ok",
       "code": 200,
-      "ms": 1672
-    },
-    "hana": {
-      "state": "ok",
-      "code": 200,
-      "ms": 2557
-    },
-    "musinsa": {
-      "state": "ok",
-      "code": 200,
-      "ms": 3889,
-      "finalUrl": "https://global.musinsa.com/choose-location"
+      "ms": 1502
     },
     "kbstar": {
       "state": "ok",
       "code": 200,
-      "ms": 3438
-    },
-    "kakaobank": {
-      "state": "ok",
-      "code": 200,
-      "ms": 2135
+      "ms": 1981
     },
     "toss": {
       "state": "ok",
       "code": 200,
-      "ms": 2806
+      "ms": 1755
+    },
+    "musinsa": {
+      "state": "ok",
+      "code": 200,
+      "ms": 2818,
+      "finalUrl": "https://global.musinsa.com/choose-location"
+    },
+    "hana": {
+      "state": "ok",
+      "code": 200,
+      "ms": 1908
+    },
+    "kakaobank": {
+      "state": "ok",
+      "code": 200,
+      "ms": 1231
     },
     "gov24": {
       "state": "ok",
       "code": 200,
-      "ms": 2271
+      "ms": 1304
     },
     "hometax": {
       "state": "ok",
       "code": 200,
-      "ms": 1545
+      "ms": 910
     },
     "nhis": {
       "state": "ok",
       "code": 200,
-      "ms": 1424
+      "ms": 1806
     },
     "wavve": {
       "state": "ok",
       "code": 200,
-      "ms": 994
+      "ms": 1007
     },
     "epost": {
       "state": "ok",
       "code": 200,
-      "ms": 1445
+      "ms": 1611
     },
     "youtube": {
       "state": "ok",
       "code": 200,
-      "ms": 299
-    },
-    "disneyplus": {
-      "state": "ok",
-      "code": 200,
-      "ms": 108
-    },
-    "netflix": {
-      "state": "ok",
-      "code": 200,
-      "ms": 1558,
-      "finalUrl": "https://www.netflix.com/kr/"
-    },
-    "coupangplay": {
-      "state": "ok",
-      "code": 200,
-      "ms": 761,
-      "finalUrl": "https://www.coupangplay.com/not-available"
+      "ms": 429
     },
     "tving": {
       "state": "ok",
       "code": 200,
-      "ms": 1676
+      "ms": 1671
     },
-    "11st": {
-      "state": "error",
-      "code": 502,
-      "ms": 7043,
-      "fails": 2
+    "disneyplus": {
+      "state": "ok",
+      "code": 200,
+      "ms": 320
+    },
+    "coupangplay": {
+      "state": "ok",
+      "code": 200,
+      "ms": 785,
+      "finalUrl": "https://www.coupangplay.com/not-available"
+    },
+    "netflix": {
+      "state": "ok",
+      "code": 200,
+      "ms": 2075,
+      "finalUrl": "https://www.netflix.com/kr/"
     },
     "kakao-webtoon": {
       "state": "ok",
       "code": 200,
-      "ms": 961
-    },
-    "chatgpt": {
-      "state": "ok",
-      "code": 200,
-      "ms": 532
-    },
-    "claude": {
-      "state": "restricted",
-      "code": 403,
-      "ms": 71
-    },
-    "novelpia": {
-      "state": "ok",
-      "code": 200,
-      "ms": 903
+      "ms": 434
     },
     "kakaopage": {
       "state": "ok",
       "code": 200,
-      "ms": 1607
+      "ms": 348
     },
-    "ridi": {
+    "11st": {
+      "state": "restricted",
+      "code": 502,
+      "ms": 5736
+    },
+    "claude": {
+      "state": "restricted",
+      "code": 403,
+      "ms": 472
+    },
+    "chatgpt": {
       "state": "ok",
       "code": 200,
-      "ms": 1368,
-      "finalUrl": "https://ridibooks.com/comics/ebook"
+      "ms": 653
+    },
+    "novelpia": {
+      "state": "ok",
+      "code": 200,
+      "ms": 690
     },
     "perplexity": {
       "state": "ok",
       "code": 200,
-      "ms": 57
+      "ms": 82
     },
     "gemini": {
       "state": "ok",
       "code": 200,
-      "ms": 150
+      "ms": 196
+    },
+    "ridi": {
+      "state": "ok",
+      "code": 200,
+      "ms": 1013,
+      "finalUrl": "https://ridibooks.com/comics/ebook"
     },
     "nps": {
       "state": "ok",
       "code": 200,
-      "ms": 3525,
+      "ms": 3255,
       "finalUrl": "https://www.nps.or.kr/gate.do"
     },
     "ecrm": {
       "state": "ok",
       "code": 200,
-      "ms": 3617,
+      "ms": 3269,
       "finalUrl": "https://ecrm.police.go.kr/minwon/main"
     },
     "wrtn": {
       "state": "ok",
       "code": 200,
-      "ms": 1242
+      "ms": 457
     },
     "naver-webtoon": {
       "state": "ok",
       "code": 200,
-      "ms": 3655,
+      "ms": 2409,
       "finalUrl": "https://comic.naver.com/index"
     },
     "munpia": {
       "state": "ok",
       "code": 200,
-      "ms": 3595
+      "ms": 2400
     },
     "naver-map": {
       "state": "ok",
       "code": 200,
-      "ms": 2438,
+      "ms": 1711,
       "finalUrl": "https://map.naver.com/p/"
     },
     "kakao-map": {
       "state": "restricted",
       "code": 403,
-      "ms": 2614
+      "ms": 1878
     },
     "jobkorea": {
       "state": "ok",
       "code": 200,
-      "ms": 1546
+      "ms": 1670
     },
     "srt": {
       "state": "ok",
       "code": 200,
-      "ms": 3303,
+      "ms": 2344,
       "finalUrl": "https://etk.srail.kr/main.do"
-    },
-    "instagram": {
-      "state": "ok",
-      "code": 200,
-      "ms": 1037
-    },
-    "korail": {
-      "state": "ok",
-      "code": 200,
-      "ms": 3811
     },
     "qnet": {
       "state": "ok",
       "code": 200,
-      "ms": 1812
+      "ms": 1077
     },
     "x": {
       "state": "ok",
       "code": 200,
-      "ms": 868
+      "ms": 326
+    },
+    "instagram": {
+      "state": "ok",
+      "code": 200,
+      "ms": 819
     },
     "facebook": {
       "state": "restricted",
       "code": 400,
-      "ms": 1199
+      "ms": 417
+    },
+    "korail": {
+      "state": "ok",
+      "code": 200,
+      "ms": 3151
     },
     "baemin": {
       "state": "ok",
       "code": 200,
-      "ms": 1251
-    },
-    "kmooc": {
-      "state": "ok",
-      "code": 200,
-      "ms": 2894
-    },
-    "yogiyo": {
-      "state": "restricted",
-      "code": 403,
-      "ms": 578
+      "ms": 760
     },
     "ebs": {
       "state": "ok",
       "code": 200,
-      "ms": 3172,
+      "ms": 2105,
       "finalUrl": "https://www.ebs.co.kr/main?NaPm=ctDhf2bviewCciD0Gy1001FZzHfpCO600-MCtrDsaCetDhf3rbd2wCbaD1E0CaaD1E0ChkDb03c9555b13"
     },
-    "bunjang": {
+    "kmooc": {
       "state": "ok",
       "code": 200,
-      "ms": 428
+      "ms": 2000
+    },
+    "yogiyo": {
+      "state": "restricted",
+      "code": 403,
+      "ms": 728
     },
     "naver-cafe": {
       "state": "ok",
       "code": 200,
-      "ms": 2148,
+      "ms": 1360,
       "finalUrl": "https://section.cafe.naver.com/ca-fe/"
     },
-    "saramin": {
+    "bunjang": {
       "state": "ok",
       "code": 200,
-      "ms": 5873,
-      "finalUrl": "https://www.saramin.co.kr/zf_user/"
+      "ms": 352
     },
     "naver-blog": {
       "state": "ok",
       "code": 200,
-      "ms": 2418,
+      "ms": 1349,
       "finalUrl": "https://section.blog.naver.com/BlogHome.naver"
     },
     "daangn": {
       "state": "ok",
       "code": 200,
-      "ms": 1211,
+      "ms": 1510,
       "finalUrl": "https://www.daangn.com/kr/"
+    },
+    "saramin": {
+      "state": "ok",
+      "code": 200,
+      "ms": 5908,
+      "finalUrl": "https://www.saramin.co.kr/zf_user/"
     },
     "weather": {
       "state": "ok",
       "code": 200,
-      "ms": 3661,
+      "ms": 3056,
       "finalUrl": "https://www.weather.go.kr/w/index.do"
     },
     "cjlogistics": {
       "state": "ok",
       "code": 200,
-      "ms": 6110
+      "ms": 6859
     },
     "work24": {
       "state": "error",
       "ms": 15000,
-      "fails": 2
+      "fails": 3
     }
   }
 }
