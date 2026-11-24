@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-11-24",
+    "id": "11st",
+    "from": "restricted",
+    "to": "ok"
+  },
+  {
     "date": "2026-11-17",
     "id": "11st",
     "from": "error",
