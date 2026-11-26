@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-11-26",
+    "id": "danawa",
+    "from": "restricted",
+    "to": "ok",
+    "note": "https://construction.danawa.com/"
+  },
+  {
+    "date": "2026-11-26",
+    "id": "kbstar",
+    "from": "ok",
+    "to": "error",
+    "note": "UND_ERR_CONNECT_TIMEOUT"
+  },
+  {
+    "date": "2026-11-26",
+    "id": "woori",
+    "from": "ok",
+    "to": "error",
+    "note": "ECONNRESET"
+  },
+  {
     "date": "2026-11-25",
     "id": "11st",
     "from": "ok",
