@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-27",
+    "id": "kbstar",
+    "from": "error",
+    "to": "ok"
+  },
+  {
+    "date": "2026-11-27",
+    "id": "woori",
+    "from": "error",
+    "to": "ok"
+  },
+  {
+    "date": "2026-11-27",
+    "id": "kakaobank",
+    "from": "ok",
+    "to": "error",
+    "note": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+  },
+  {
+    "date": "2026-11-27",
+    "id": "perplexity",
+    "from": "ok",
+    "to": "restricted"
+  },
+  {
     "date": "2026-11-26",
     "id": "danawa",
     "from": "restricted",
